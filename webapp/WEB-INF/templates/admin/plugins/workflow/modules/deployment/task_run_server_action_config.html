@@ -1,0 +1,16 @@
+<fieldset>
+	<legend>#i18n{module.workflow.deployment.task_run_server_action_config.title}</legend>
+	<div class="control-group">
+		<label class="control-label" for="code_action">#i18n{module.workflow.deployment.task_run_server_action_config.label_code_action} * :</label>
+		<div class="controls">
+			<#if config?exists && config.actionCode?has_content>
+				<@combo items=action_list default_value=config.actionCode name="code_action" />
+			<#else>
+				<@combo items=action_list default_value="" name="code_action" />
+			</#if>
+			<span class="help-block">
+				#i18n{module.workflow.deployment.task_run_server_action_config.label_code_action_comment}
+			</span>
+		</div>
+	</div>
+</fieldset>
