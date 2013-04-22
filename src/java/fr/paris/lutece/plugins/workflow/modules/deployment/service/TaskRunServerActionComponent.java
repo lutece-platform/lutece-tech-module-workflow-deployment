@@ -45,6 +45,7 @@ import org.apache.commons.lang.StringUtils;
 import fr.paris.lutece.plugins.deployment.service.IActionService;
 import fr.paris.lutece.plugins.deployment.service.IWorkflowDeploySiteService;
 import fr.paris.lutece.plugins.deployment.util.ConstanteUtils;
+import fr.paris.lutece.plugins.deployment.util.DeploymentUtils;
 import fr.paris.lutece.plugins.workflow.modules.deployment.business.TaskRunServerActionConfig;
 import fr.paris.lutece.plugins.workflow.utils.WorkflowUtils;
 import fr.paris.lutece.plugins.workflow.web.task.NoFormTaskComponent;
@@ -72,7 +73,7 @@ public class TaskRunServerActionComponent extends NoFormTaskComponent
     // MESSAGES
     private static final String MESSAGE_MANDATORY_FIELD = "module.workflow.deployment.message.mandatory.field";
     // FIELDS
-    private static final String FIELD_CODE_ACTION="module.workflow.deployment.task_run_server_action_config.label_code_action";
+    private static final String FIELD_KEY_ACTION="module.workflow.deployment.task_run_server_action_config.label_key_action";
 
     @Inject
     private IActionService _actionService;
@@ -84,11 +85,11 @@ public class TaskRunServerActionComponent extends NoFormTaskComponent
     @Override
     public String doSaveConfig( HttpServletRequest request, Locale locale, ITask task )
     {
-        String strCodeAction = request.getParameter( ConstanteUtils.PARAM_CODE_ACTION_DEPLOYMENT );
+        String strkeyAction = request.getParameter( ConstanteUtils.PARAM_KEY_ACTION_DEPLOYMENT );
         String strError = StringUtils.EMPTY;
-        if ( StringUtils.isBlank( strCodeAction ) )
+        if ( StringUtils.isBlank( strkeyAction ) )
         {
-            strError = FIELD_CODE_ACTION;
+            strError = FIELD_KEY_ACTION;
         }
 
        
@@ -111,7 +112,7 @@ public class TaskRunServerActionComponent extends NoFormTaskComponent
             bCreate = true;
         }
 
-        config.setActionCode(strCodeAction);
+        config.setActionKey(strkeyAction);
 
         if ( bCreate )
         {
@@ -137,7 +138,7 @@ public class TaskRunServerActionComponent extends NoFormTaskComponent
 
         model.put( ConstanteUtils.MARK_CONFIG, config );
         model.put( ConstanteUtils.MARK_ACTION_LIST,
-               _actionService.getListAction(locale) );
+              DeploymentUtils.getReferenceListAction(_actionService.getListAction(locale) ));
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_TASK_RUN_DEPLOYMENT_ACTION_CONFIG, locale,
                 model );

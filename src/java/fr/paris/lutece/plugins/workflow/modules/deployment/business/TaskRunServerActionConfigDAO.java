@@ -47,10 +47,10 @@ import fr.paris.lutece.util.sql.DAOUtil;
  */
 public class TaskRunServerActionConfigDAO implements ITaskConfigDAO<TaskRunServerActionConfig>
 {
-    private static final String SQL_QUERY_INSERT = "INSERT INTO task_run_server_action_cf(id_task,action_code)"
+    private static final String SQL_QUERY_INSERT = "INSERT INTO task_run_server_action_cf(id_task,action_key)"
             + "VALUES (?,?)";
-    private static final String SQL_QUERY_FIND_BY_PRIMARY_KEY = "SELECT id_task,action_code FROM task_run_server_action_cf  WHERE id_task=?";
-    private static final String SQL_QUERY_UPDATE = "UPDATE task_run_server_action_cf SET action_code = ? WHERE id_task = ? ";
+    private static final String SQL_QUERY_FIND_BY_PRIMARY_KEY = "SELECT id_task,action_key FROM task_run_server_action_cf  WHERE id_task=?";
+    private static final String SQL_QUERY_UPDATE = "UPDATE task_run_server_action_cf SET action_key = ? WHERE id_task = ? ";
     private static final String SQL_QUERY_DELETE = "DELETE FROM task_run_server_action_cf WHERE id_task = ? ";
 
     /**
@@ -73,7 +73,7 @@ public class TaskRunServerActionConfigDAO implements ITaskConfigDAO<TaskRunServe
         int nPos = 0;
 
         daoUtil.setInt( ++nPos, config.getIdTask( ) );
-        daoUtil.setString( ++nPos, config.getActionCode() );
+        daoUtil.setString( ++nPos, config.getActionKey() );
 
         daoUtil.executeUpdate(  );
         daoUtil.free(  );
@@ -89,7 +89,7 @@ public class TaskRunServerActionConfigDAO implements ITaskConfigDAO<TaskRunServe
 
         int nPos = 0;
 
-        daoUtil.setString( ++nPos, config.getActionCode());
+        daoUtil.setString( ++nPos, config.getActionKey());
         daoUtil.setInt( ++nPos, config.getIdTask(  ) );
 
         daoUtil.executeUpdate(  );
@@ -115,7 +115,7 @@ public class TaskRunServerActionConfigDAO implements ITaskConfigDAO<TaskRunServe
         {
             config = new TaskRunServerActionConfig( );
             config.setIdTask( daoUtil.getInt( ++nPos ) );
-            config.setActionCode( daoUtil.getString( ++nPos ) );
+            config.setActionKey( daoUtil.getString( ++nPos ) );
         }
 
         daoUtil.free(  );

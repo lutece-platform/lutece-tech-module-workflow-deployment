@@ -43,7 +43,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
-import fr.paris.lutece.plugins.deployment.business.WorkflowDeploySiteContext;
 import fr.paris.lutece.plugins.deployment.service.IWorkflowDeploySiteService;
 import fr.paris.lutece.plugins.deployment.util.ConstanteUtils;
 import fr.paris.lutece.plugins.workflow.utils.WorkflowUtils;
@@ -59,16 +58,15 @@ import fr.paris.lutece.util.html.HtmlTemplate;
  * AlertTaskComponent
  *
  */
-public class TaskTagComponent extends NoConfigTaskComponent
+public class TaskDeployScript extends NoConfigTaskComponent
 {
 
-    private static final String TEMPLATE_TASK_TAG_FORM = "admin/plugins/workflow/modules/deployment/task_tag_form.html";
+    private static final String TEMPLATE_TASK_DEPLOY_SCRIPT = "admin/plugins/workflow/modules/deployment/task_deploy_script_form.html";
     //Properties
     private static final String MESSAGE_MANDATORY_FIELD = "module.workflow.deployment.message.mandatory.field";
-    private static final String PROPERTY_MANDATORY_FIELD_SITE_TAG_VERSION="module.workflow.deployment.task_tag_form.label_site_tag_version";
-    private static final String PROPERTY_MANDATORY_FIELD_SITE_NEXT_VERSION="module.workflow.deployment.task_tag_form.label_site_next_version";
-    private static final String PROPERTY_MANDATORY_FIELD_SITE_TAG_NAME="module.workflow.deployment.task_tag_form.label_site_tag_name";
- 
+    private static final String PROPERTY_MANDATORY_FIELD_SCRIPT="module.workflow.deployment.task_deploy_script_form.label_script";
+    private static final String PROPERTY_MANDATORY_FIELD_DATABASE="module.workflow.deployment.task_deploy_script_form.label_database";
+    
 	@Inject
     private IWorkflowDeploySiteService _workflowDeploySiteService;
 	
@@ -77,23 +75,13 @@ public class TaskTagComponent extends NoConfigTaskComponent
 	public String doValidateTask(int nIdResource, String strResourceType,
 			HttpServletRequest request, Locale locale, ITask task) {
 		String strError = WorkflowUtils.EMPTY_STRING;
-        String strSiteVersion = request.getParameter(ConstanteUtils.PARAM_SITE_TAG_VERSION );
-        String strSiteNextVersion = request.getParameter( ConstanteUtils.PARAM_SITE_NEXT_VERSION );
-        String strSiteTagName = request.getParameter( ConstanteUtils.PARAM_SITE_TAG_NAME);
-            
-        if(StringUtils.isBlank(strSiteVersion))
+        String strScript = request.getParameter(ConstanteUtils.PARAM_SCRIPT );
+             
+        if(StringUtils.isBlank(strScript))
         {
-        	strError=I18nService.getLocalizedString(PROPERTY_MANDATORY_FIELD_SITE_TAG_VERSION, locale);
+        	strError=I18nService.getLocalizedString(PROPERTY_MANDATORY_FIELD_SCRIPT, locale);
         }
-        else if(StringUtils.isBlank(strSiteNextVersion))
-        {
-        	strError=I18nService.getLocalizedString(PROPERTY_MANDATORY_FIELD_SITE_NEXT_VERSION, locale);
-        }
-        else if(StringUtils.isBlank(strSiteTagName))
-        {
-        	strError=I18nService.getLocalizedString(PROPERTY_MANDATORY_FIELD_SITE_TAG_NAME, locale);
-        }
-
+       
         
         if ( StringUtils.isNotBlank( strError ) )
         {
@@ -109,18 +97,14 @@ public class TaskTagComponent extends NoConfigTaskComponent
 			HttpServletRequest request, Locale locale, ITask task) {
 		
 		
-		WorkflowDeploySiteContext workflowDeploySiteContext=_workflowDeploySiteService.getWorkflowDeploySiteContext(nIdResource);
-		 
-		//init Tag informations before TAG
-		_workflowDeploySiteService.initTagInformations(workflowDeploySiteContext);
-		
+	
 		Map<String, Object> model = new HashMap<String, Object>(  );
-        model.put( ConstanteUtils.MARK_SITE_TAG_VERSION, workflowDeploySiteContext.getTagVersion()  );
-		model.put( ConstanteUtils.MARK_SITE_NEXT_VERSION, workflowDeploySiteContext.getNextVersion()  );
-		model.put( ConstanteUtils.MARK_SITE_TAG_NAME, workflowDeploySiteContext.getTagName() );
+//        model.put( ConstanteUtils.MARK_SITE_TAG_VERSION, workflowDeploySiteContext.getTagVersion()  );
+//		model.put( ConstanteUtils.MARK_SITE_NEXT_VERSION, workflowDeploySiteContext.getNextVersion()  );
+//		model.put( ConstanteUtils.MARK_SITE_TAG_NAME, workflowDeploySiteContext.getTagName() );
+//       
        
-       
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_TASK_TAG_FORM, locale, model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_TASK_DEPLOY_SCRIPT, locale, model );
 
         return template.getHtml(  );
 	}

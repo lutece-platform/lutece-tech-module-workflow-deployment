@@ -78,7 +78,7 @@ public class TaskRunServerAction extends SimpleTask
         if ( ( config != null ) && ( resourceHistory != null ))
         {
         	 WorkflowDeploySiteContext workflowDeploySiteContext=_workflowDeploySiteService.getWorkflowDeploySiteContext(resourceHistory.getIdResource());
-        	 _workflowDeploySiteService.executeServerAction(config.getActionCode(), request, workflowDeploySiteContext, locale);
+        	 _workflowDeploySiteService.executeServerAction(config.getActionKey(), request, workflowDeploySiteContext, locale);
         }
     }
 

@@ -43,15 +43,19 @@ import fr.paris.lutece.plugins.workflowcore.business.config.TaskConfig;
  */
 public class TaskRunServerActionConfig extends TaskConfig
 {
-    private String _strActionCode;
+    private String _strActionKey;
+   
 
-	public void setActionCode(String _strActionCode) {
-		this._strActionCode = _strActionCode;
+	public void setActionKey(String _strActionCode) {
+		this._strActionKey = _strActionCode;
 	}
 
-	public String getActionCode() {
-		return _strActionCode;
+	public String getActionKey() {
+		return _strActionKey;
 	}
+
+	
+	
 
   
 
