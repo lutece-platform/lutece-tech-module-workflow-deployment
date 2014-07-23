@@ -63,13 +63,13 @@
     </dependencies>
 
     <properties>
-        <componentName>workflow-mylutecevalidation</componentName>
-        <jiraProjectName>WORKFLOWMYLUTECEVALIDATION</jiraProjectName>
-        <jiraComponentId>10290</jiraComponentId>
+        <componentName>workflow-deployment</componentName>
+        <jiraProjectName></jiraProjectName>
+        <jiraComponentId></jiraComponentId>
     </properties>
     <scm>
-        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/directory-form-workflow/module-workflow-mylutece-validation</connection>
-        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/directory-form-workflow/module-workflow-mylutece-validation</developerConnection>
-        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/directory-form-workflow/module-workflow-mylutece-validation</url>
+        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</developerConnection>
+        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/technical/module-workflow-deployment</url>
     </scm>
 </project>
