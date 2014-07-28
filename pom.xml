@@ -46,26 +46,21 @@
         <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
             <artifactId>plugin-deployment</artifactId>
-            <version>[1.0.0-SNAPSHOT,4.0.0-SNAPSHOT)</version>
+            <version>[1.0.0-SNAPSHOT,)</version>
             <type>lutece-plugin</type>
         </dependency>
-         <dependency>
-            <groupId>fr.paris.lutece.plugins</groupId>
-            <artifactId>plugin-deployment</artifactId>
-            <version>[1.0.0-SNAPSHOT,4.0.0-SNAPSHOT)</version>
-            <type>lutece-plugin</type>
-        </dependency>
+      
          <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
       		<artifactId>library-workflow-core</artifactId>
-   			 <version>1.0.2-SNAPSHOT</version>
+   			 <version>[1.0.2-SNAPSHOT,)</version>
            </dependency>
     </dependencies>
 
     <properties>
         <componentName>workflow-deployment</componentName>
-        <jiraProjectName></jiraProjectName>
-        <jiraComponentId></jiraComponentId>
+        <jiraProjectName>MWD</jiraProjectName>
+        <jiraComponentId>12459</jiraComponentId>
     </properties>
     <scm>
         <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</connection>
