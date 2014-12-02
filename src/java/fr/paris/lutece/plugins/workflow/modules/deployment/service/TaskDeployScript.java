@@ -34,23 +34,18 @@
 package fr.paris.lutece.plugins.workflow.modules.deployment.service;
 
 
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
+import fr.paris.lutece.plugins.deployment.business.WorkflowDeploySiteContext;
 import fr.paris.lutece.plugins.deployment.service.IWorkflowDeploySiteService;
-import fr.paris.lutece.plugins.deployment.util.ConstanteUtils;
-import fr.paris.lutece.plugins.workflow.utils.WorkflowUtils;
-import fr.paris.lutece.plugins.workflow.web.task.NoConfigTaskComponent;
-import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
-import fr.paris.lutece.portal.service.i18n.I18nService;
-import fr.paris.lutece.portal.service.template.AppTemplateService;
-import fr.paris.lutece.util.html.HtmlTemplate;
+import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
+import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceHistoryService;
+import fr.paris.lutece.plugins.workflowcore.service.task.SimpleTask;
 
 
 /**
@@ -58,72 +53,34 @@ import fr.paris.lutece.util.html.HtmlTemplate;
  * AlertTaskComponent
  *
  */
-public class TaskDeployScript extends NoConfigTaskComponent
-{
+public class TaskDeployScript extends  SimpleTask {
 
-    private static final String TEMPLATE_TASK_DEPLOY_SCRIPT = "admin/plugins/workflow/modules/deployment/task_deploy_script_form.html";
-    //Properties
-    private static final String MESSAGE_MANDATORY_FIELD = "module.workflow.deployment.message.mandatory.field";
-    private static final String PROPERTY_MANDATORY_FIELD_SCRIPT="module.workflow.deployment.task_deploy_script_form.label_script";
-    private static final String PROPERTY_MANDATORY_FIELD_DATABASE="module.workflow.deployment.task_deploy_script_form.label_database";
-    
+	@Inject
+    private IResourceHistoryService _resourceHistoryService;
 	@Inject
     private IWorkflowDeploySiteService _workflowDeploySiteService;
 	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale )
+    {
+         ResourceHistory resourceHistory = _resourceHistoryService.findByPrimaryKey( nIdResourceHistory );
+         WorkflowDeploySiteContext workflowDeploySiteContext=_workflowDeploySiteService.getWorkflowDeploySiteContext(resourceHistory.getIdResource());
+          _workflowDeploySiteService.deployScript(workflowDeploySiteContext,locale);
+           
+    }
+
+    /**
+    * {@inheritDoc}
+    */
+    @Override
+    public String getTitle( Locale locale )
+    {
+        return StringUtils.EMPTY;
+    }
 	
-	@Override
-	public String doValidateTask(int nIdResource, String strResourceType,
-			HttpServletRequest request, Locale locale, ITask task) {
-		String strError = WorkflowUtils.EMPTY_STRING;
-        String strScript = request.getParameter(ConstanteUtils.PARAM_SCRIPT );
-             
-        if(StringUtils.isBlank(strScript))
-        {
-        	strError=I18nService.getLocalizedString(PROPERTY_MANDATORY_FIELD_SCRIPT, locale);
-        }
-       
-        
-        if ( StringUtils.isNotBlank( strError ) )
-        {
-            Object[] tabRequiredFields = { strError };
-            return I18nService.getLocalizedString(  MESSAGE_MANDATORY_FIELD, tabRequiredFields,locale);
-        }
-
-        return null;
-	}
-
-	@Override
-	public String getDisplayTaskForm(int nIdResource, String strResourceType,
-			HttpServletRequest request, Locale locale, ITask task) {
-		
-		
-	
-		Map<String, Object> model = new HashMap<String, Object>(  );
-//        model.put( ConstanteUtils.MARK_SITE_TAG_VERSION, workflowDeploySiteContext.getTagVersion()  );
-//		model.put( ConstanteUtils.MARK_SITE_NEXT_VERSION, workflowDeploySiteContext.getNextVersion()  );
-//		model.put( ConstanteUtils.MARK_SITE_TAG_NAME, workflowDeploySiteContext.getTagName() );
-//       
-       
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_TASK_DEPLOY_SCRIPT, locale, model );
-
-        return template.getHtml(  );
-	}
-
-	@Override
-	public String getDisplayTaskInformation(int nIdHistory,
-			HttpServletRequest request, Locale locale, ITask task) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getTaskInformationXml(int nIdHistory,
-			HttpServletRequest request, Locale locale, ITask task) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-   
-   
 
    
 

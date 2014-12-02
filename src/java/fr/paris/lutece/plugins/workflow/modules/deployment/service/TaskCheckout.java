@@ -7,15 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
-import fr.paris.lutece.plugins.deployment.business.ISite;
 import fr.paris.lutece.plugins.deployment.business.WorkflowDeploySiteContext;
-import fr.paris.lutece.plugins.deployment.service.DeploymentPlugin;
 import fr.paris.lutece.plugins.deployment.service.IWorkflowDeploySiteService;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
 import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceHistoryService;
 import fr.paris.lutece.plugins.workflowcore.service.task.SimpleTask;
-import fr.paris.lutece.portal.service.plugin.Plugin;
-import fr.paris.lutece.portal.service.plugin.PluginService;
 
 
 public class TaskCheckout extends  SimpleTask {
