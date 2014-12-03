@@ -15,16 +15,26 @@
 		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
 		p:key="taskCheckout" p:titleI18nKey="module.workflow.deployment.task_checkout_title"
 		p:beanName="workflow-deployment.taskCheckout"
-		p:taskForAutomaticAction="false" />
+		p:taskForAutomaticAction="true" />
 	<bean id="workflow-deployment.taskCheckout"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskCheckout" />
+
+   <!-- Task Tag Automatically -->
+	<bean id="workflow-deployment.taskTypeTagAutomatically"
+		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
+		p:key="taskTagAutomatically" p:titleI18nKey="module.workflow.deployment.task_tag_automatically_title"
+		p:beanName="workflow-deployment.taskTagAutomatically"
+		p:taskForAutomaticAction="true" />
+		
+	<bean id="workflow-deployment.taskTagAutomatically" 
+		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskTagAutomatically" />
 
 
 	<bean id="workflow-deployment.taskTypeAssemblySite"
 		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
 		p:key="taskAssemblySite" p:titleI18nKey="module.workflow.deployment.task_assembly_site_title"
 		p:beanName="workflow-deployment.taskAssemblySite"
-		p:taskForAutomaticAction="false" />
+		p:taskForAutomaticAction="true" />
 	<bean id="workflow-deployment.taskAssemblySite"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskAssemblySite" />
 
@@ -41,7 +51,7 @@
 		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
 		p:key="taskDeploySite" p:titleI18nKey="module.workflow.deployment.task_deploy_site_title"
 		p:beanName="workflow-deployment.taskDeploySite"
-		p:taskForAutomaticAction="false" />
+		p:taskForAutomaticAction="true" />
 	<bean id="workflow-deployment.taskDeploySite"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskDeploySite" />
 
@@ -52,7 +62,7 @@
 		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
 		p:key="taskDeployScript" p:titleI18nKey="module.workflow.deployment.task_deploy_script_title"
 		p:beanName="workflow-deployment.taskDeployScript"
-		p:taskForAutomaticAction="false" />
+		p:taskForAutomaticAction="true" />
 		
 	<bean id="workflow-deployment.taskDeployScript"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskDeployScript" />

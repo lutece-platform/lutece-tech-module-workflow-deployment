@@ -40,7 +40,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
+import fr.paris.lutece.plugins.deployment.business.IAction;
 import fr.paris.lutece.plugins.deployment.business.WorkflowDeploySiteContext;
+import fr.paris.lutece.plugins.deployment.service.IActionService;
 import fr.paris.lutece.plugins.deployment.service.IWorkflowDeploySiteService;
 import fr.paris.lutece.plugins.workflow.modules.deployment.business.TaskRunServerActionConfig;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
@@ -64,6 +66,9 @@ public class TaskRunServerAction extends SimpleTask
     
     @Inject
     private TaskRunServerActionConfigService _taskRunDeploymentActionConfigService ;
+    
+    @Inject
+    private IActionService _actionService;
     
 
     /**
@@ -90,14 +95,22 @@ public class TaskRunServerAction extends SimpleTask
     {
         _taskRunDeploymentActionConfigService.remove( this.getId( ) );
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
     public String getTitle( Locale locale )
     {
-       
+    	TaskRunServerActionConfig config = _taskRunDeploymentActionConfigService.findByPrimaryKey( this.getId( ) );
+
+    	if ( ( config != null  && !StringUtils.isEmpty(config.getActionKey())) )
+        {
+    		 IAction action=_actionService.getAction(config.getActionKey(),locale);
+    		 return action.getName();
+        }
         return StringUtils.EMPTY;
     }
+
+   
 }
