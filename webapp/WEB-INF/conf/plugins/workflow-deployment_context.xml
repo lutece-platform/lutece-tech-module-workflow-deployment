@@ -74,6 +74,15 @@
 		p:taskType-ref="workflow-deployment.taskTypeTag" />
 
 
+    <bean id="workflow-deployment.taskTypeInitAppContext"
+        class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
+        p:key="taskInitAppContext" p:titleI18nKey="module.workflow.deployment.task_init_app_context_title"
+        p:beanName="workflow-deployment.taskInitAppContext"
+        p:taskForAutomaticAction="true" />
+        
+    <bean id="workflow-deployment.taskInitAppContext"
+        class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskInitAppContext" />
+
 	<!--  task taskRunServerAction -->
 	<bean id="workflow-deployment.taskRunServerActionConfigDAO"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.business.TaskRunServerActionConfigDAO" />
