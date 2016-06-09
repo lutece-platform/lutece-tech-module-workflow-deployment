@@ -63,8 +63,8 @@
         <jiraComponentId>12459</jiraComponentId>
     </properties>
     <scm>
-        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</connection>
+        <connection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</connection>
         <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</developerConnection>
-        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/technical/module-workflow-deployment</url>
+        <url>https://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/technical/module-workflow-deployment</url>
     </scm>
 </project>
