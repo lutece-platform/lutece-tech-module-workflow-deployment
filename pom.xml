@@ -10,7 +10,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>module-workflow-deployment</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Workflow Deployment</name>
 
     <repositories>
@@ -63,8 +63,8 @@
         <jiraComponentId>12459</jiraComponentId>
     </properties>
     <scm>
-        <connection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</connection>
-        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/technical/module-workflow-deployment</developerConnection>
-        <url>https://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/technical/module-workflow-deployment</url>
+        <connection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/tags/module-workflow-deployment-1.0.0</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/tags/module-workflow-deployment-1.0.0</developerConnection>
+        <url>https://dev.lutece.paris.fr/viewvc/lutece/portal/tags/module-workflow-deployment-1.0.0</url>
     </scm>
 </project>
