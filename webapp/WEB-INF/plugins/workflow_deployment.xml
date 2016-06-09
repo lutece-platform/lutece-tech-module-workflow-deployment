@@ -2,7 +2,7 @@
     <!-- Plugin Informations -->
     <name>workflow-deployment</name>
     <class>fr.paris.lutece.plugins.workflow.modules.deployment.service.WorkFlowDeploymentPlugin</class>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <documentation/>
     <installation/>
     <changes/>
