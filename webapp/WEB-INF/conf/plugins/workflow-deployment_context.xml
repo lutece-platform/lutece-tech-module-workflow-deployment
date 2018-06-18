@@ -18,18 +18,7 @@
 		p:taskForAutomaticAction="true" />
 	<bean id="workflow-deployment.taskCheckout"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskCheckout" />
-
-   <!-- Task Tag Automatically -->
-	<bean id="workflow-deployment.taskTypeTagAutomatically"
-		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
-		p:key="taskTagAutomatically" p:titleI18nKey="module.workflow.deployment.task_tag_automatically_title"
-		p:beanName="workflow-deployment.taskTagAutomatically"
-		p:taskForAutomaticAction="true" />
 		
-	<bean id="workflow-deployment.taskTagAutomatically" 
-		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskTagAutomatically" />
-
-
 	<bean id="workflow-deployment.taskTypeAssemblySite"
 		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
 		p:key="taskAssemblySite" p:titleI18nKey="module.workflow.deployment.task_assembly_site_title"
@@ -37,15 +26,6 @@
 		p:taskForAutomaticAction="true" />
 	<bean id="workflow-deployment.taskAssemblySite"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskAssemblySite" />
-
-	<bean id="workflow-deployment.taskTypeTag"
-		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
-		p:key="taskTag" p:titleI18nKey="module.workflow.deployment.task_tag_title"
-		p:beanName="workflow-deployment.taskTag" p:taskForAutomaticAction="false"
-		p:formTaskRequired="true" />
-	<bean id="workflow-deployment.taskTag"
-		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskTag" />
-	
 	
 	<bean id="workflow-deployment.taskTypeDeploySite"
 		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
@@ -66,13 +46,6 @@
 		
 	<bean id="workflow-deployment.taskDeployScript"
 		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskDeployScript" />
-
-
-	<!-- Task components -->
-	<bean id="workflow-deployment.taskTagComponent"
-		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskTagComponent"
-		p:taskType-ref="workflow-deployment.taskTypeTag" />
-
 
   
 	<!--  task taskRunServerAction -->
