@@ -72,5 +72,14 @@
 		p:taskType-ref="workflow-deployment.taskTypeRunServerAction"
 		p:taskConfigService-ref="workflow-deployment.taskRunServerActionConfigService" />
 
-
+        <!-- task run Custom Maven CMD -->
+        
+        <bean id="workflow-deployment.taskRunCustomMavenGoal"
+		class="fr.paris.lutece.plugins.workflow.modules.deployment.service.TaskRunMavenGoal"
+		scope="prototype" />
+        <bean id="workflow-deployment.taskTypeRunCustomMavenGoal"
+		class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
+		p:key="taskRunCustomMavenGoal" p:titleI18nKey="module.workflow.deployment.task_run_custom_maven_goal.title"
+		p:beanName="workflow-deployment.taskRunCustomMavenGoal" p:configRequired="false"
+		p:formTaskRequired="false" p:taskForAutomaticAction="false" />
 </beans>
